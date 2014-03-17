@@ -15,7 +15,7 @@ namespace University.Controllers
         {
 
             return View();
-        }
+        } 
 
         //
         // GET: /Student/Details/5
