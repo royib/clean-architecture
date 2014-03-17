@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using University.Core.Service;
 
 namespace University.Controllers
 {
     public class StudentController : Controller
     {
+        private IStudentService _studentService;
+
+        public StudentController(IStudentService studentService)
+        {
+            _studentService = studentService;
+        }
         //
         // GET: /Student/
 
@@ -21,8 +28,9 @@ namespace University.Controllers
         // GET: /Student/Details/5
 
         public ActionResult Details(int id)
-        {    
-            return View();
+        {
+            var Student = _studentService.getStudentById(id);
+            return View(Student);
         }
 
         //

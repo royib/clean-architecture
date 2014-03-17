@@ -27,9 +27,9 @@
             responseDataKey: "Students",
             autoGenerateColumns: false,
             columns: [
-                        { headerText: "Student ID", key: "StudentID", dataType: "string", template: "<a href='/Student/Details/${StudentID}'>${StudentID}</a>" },
-                        { headerText: "First Name", key: "FirstMidName", dataType: "string", template: "<a href='/Student/Details/${StudentID}'>${FirstMidName}</a>" },
-                        { headerText: "Last Name", key: "LastName", dataType: "string", template: "<a href='/Student/Details/${StudentID}'>${LastName}</a>" }
+                        { headerText: "Student ID", key: "StudentID", dataType: "string", template: "<a data-toggle='modal' data-target='#myModal' href='/Student/Details/${StudentID}'>${StudentID}</a>" },
+                        { headerText: "First Name", key: "FirstMidName", dataType: "string", template: "<a data-toggle='modal' data-target='#myModal' href='/Student/Details/${StudentID}'>${FirstMidName}</a>" },
+                        { headerText: "Last Name", key: "LastName", dataType: "string", template: "<a  data-toggle='modal' data-target='#myModal' href='/Student/Details/${StudentID}'>${LastName}</a>" }
             ],
             features: [
             {
@@ -54,3 +54,11 @@
 </script>
 
     <table id="grid" class="table-responsive"></table>
+
+<a href="/Student/Details/9" data-toggle="modal" data-target="#myModal">sssssss</a>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-keyboard="true" >
+<div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+</div>
+</div>

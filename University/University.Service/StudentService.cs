@@ -43,5 +43,13 @@ namespace University.Service
             return StudentsPage.ToList();
            
         }
+
+        //get student by id
+        public Student getStudentById(int id)
+        {
+            var Student = _studentRepository.GetById(id);
+            return Student;
+        }
+
     }
 }

@@ -10,5 +10,6 @@ namespace University.Core.Service
     public interface IStudentService
     {
         IEnumerable<Student> getAllStudents(int pageSize, int pageNumber, out int RecordCount, string orderByString);
+        Student getStudentById(int id);
     }
 }
