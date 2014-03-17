@@ -1,0 +1,56 @@
+﻿@model IEnumerable<University.Models.StudentDto>
+
+@{
+    ViewBag.Title = "IndexGrid";
+}
+  
+        @Scripts.Render("~/bundles/IgniteUI")
+   
+<h2>All Students</h2>
+<script>
+
+    //// The ig.loader is used to load required IgniteUI JavaScript 
+    //// and CSS resources. It accepts a configuration object that specifies
+    //// default paths and the components to load into the page.
+    $.ig.loader({
+        scriptPath: '../../Scripts/IgniteUI/',
+        cssPath: '../../Content/IgniteUI/',
+
+        //string representing which component resources are required
+        resources: "igGrid.*"
+    });
+
+    $.ig.loader(function () {
+        $("#grid").igGrid({
+            //dataSource: jsonData,
+            dataSource: "/api/StudentsApi",
+            responseDataKey: "Students",
+            autoGenerateColumns: false,
+            columns: [
+                        { headerText: "Student ID", key: "StudentID", dataType: "string", template: "<a href='/Student/Details/${StudentID}'>${StudentID}</a>" },
+                        { headerText: "First Name", key: "FirstMidName", dataType: "string", template: "<a href='/Student/Details/${StudentID}'>${FirstMidName}</a>" },
+                        { headerText: "Last Name", key: "LastName", dataType: "string", template: "<a href='/Student/Details/${StudentID}'>${LastName}</a>" }
+            ],
+            features: [
+            {
+                name: "Paging",
+                type: "remote",
+                pageSize: 5,
+                recordCountKey: "RecordCount",
+                pageSizeUrlKey: "pageSize",
+                pageIndexUrlKey: "pageNumber"
+            },
+            {
+                name: "Sorting",
+                type: "remote",
+                //sortUrlKey: "SortKey",
+                //sortUrlKeyDescValue: "SortDesk",
+                //sortUrlKeyAscValue: "SortAsk"
+            }
+            ]
+        });
+    });
+
+</script>
+
+    <table id="grid" class="table-responsive"></table>
