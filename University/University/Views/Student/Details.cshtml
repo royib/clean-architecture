@@ -5,33 +5,42 @@
     Layout = "~/Views/Shared/_ModalLayout.cshtml";
 }
 
-<h2>Details</h2>
+<script>
+    function Edit()
+    {
+        $('#myModal').modal({
+            keyboard: false,
+            remote: "/Student/Edit/" + '@(Model.StudentID)'
+        })
+    }
 
-<fieldset>
-    <legend>Student</legend>
+</script>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.LastName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.LastName)
-    </div>
+<h3>Student Details</h3>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.FirstMidName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.FirstMidName)
-    </div>
+<form class="form-horizontal" role="form" width="30%">
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.EnrollmentDate)
+    <div class="form-group">
+        <label class="col-sm-2 control-label">@Html.DisplayNameFor(model => model.LastName)</label>
+        <div class="col-sm-10">
+            <p class="form-control-static">@Html.DisplayFor(model => model.LastName)</p>
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.EnrollmentDate)
+    <div class="form-group">
+        <label class="col-sm-2 control-label">@Html.DisplayNameFor(model => model.FirstMidName)</label>
+        <div class="col-sm-10">
+            <p class="form-control-static">@Html.DisplayFor(model => model.FirstMidName)</p>
+        </div>
     </div>
-</fieldset>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">@Html.DisplayNameFor(model => model.EnrollmentDate)</label>
+        <div class="col-sm-10">
+            <p class="form-control-static">@Html.DisplayFor(model => model.EnrollmentDate)</p>
+        </div>
+    </div>
+</form>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.StudentID }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button onclick="Edit()">Edit</button>
 </p>
+
+
