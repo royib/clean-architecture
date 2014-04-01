@@ -64,7 +64,9 @@ namespace University.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+
+            var Student = _studentService.getStudentById(id);
+            return View(Student);
         }
 
         //
@@ -75,9 +77,12 @@ namespace University.Controllers
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(student).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             catch
             {

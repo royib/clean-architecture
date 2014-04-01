@@ -51,5 +51,11 @@ namespace University.Service
             return Student;
         }
 
+        //update student
+        public void UpdateStudent(int id, Student student)
+        {
+            //var Student = _studentRepository.GetById(id);
+            //Student
+        }
     }
 }
