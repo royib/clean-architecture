@@ -17,12 +17,12 @@ namespace University.Service
     public class StudentService : IStudentService
     {
         private IRepository<Student> _studentRepository;
-        private DbContext _context;
+        //private DbContext _context;
 
         public StudentService(IRepository<Student> Repository, DbContext Context)
         {
             _studentRepository = Repository;
-            _context = Context;
+            //_context = Context;
         }
         
         //Get All The Students
@@ -52,10 +52,10 @@ namespace University.Service
         }
 
         //update student
-        public void UpdateStudent(int id, Student student)
+        public void UpdateStudent(Student student)
         {
-            //var Student = _studentRepository.GetById(id);
-            //Student
+            _studentRepository.Update(student);
+            
         }
     }
 }

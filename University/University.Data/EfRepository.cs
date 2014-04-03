@@ -61,6 +61,7 @@ namespace University.Data
             if (entity == null)
                 throw new ArgumentNullException("entity");
 
+            this._context.Entry(entity).State = EntityState.Modified;
             this._context.SaveChanges();
             // }
             //catch (DbEntityValidationException dbEx)

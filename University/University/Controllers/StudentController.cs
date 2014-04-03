@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using University.Core.Service;
+using University.Core.Domain;
 
 namespace University.Controllers
 {
@@ -68,19 +69,24 @@ namespace University.Controllers
             var Student = _studentService.getStudentById(id);
             return View(Student);
         }
+        public ActionResult Edit1(int id)
+        {
+
+            var Student = _studentService.getStudentById(id);
+            return View(Student);
+        }
 
         //
         // POST: /Student/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Student student)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.Entry(student).State = EntityState.Modified;
-                    db.SaveChanges();
+                    _studentService.UpdateStudent(student);
                     return RedirectToAction("Index");
                 }
             }
@@ -88,6 +94,7 @@ namespace University.Controllers
             {
                 return View();
             }
+            return View();
         }
 
         //

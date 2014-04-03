@@ -11,6 +11,6 @@ namespace University.Core.Service
     {
         IEnumerable<Student> getAllStudents(int pageSize, int pageNumber, out int RecordCount, string orderByString);
         Student getStudentById(int id);
-        void UpdateStudent(int id, Student student);
+        void UpdateStudent(Student student);
     }
 }

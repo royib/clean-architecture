@@ -597,6 +597,7 @@
     <Content Include="Views\Student\Details.cshtml" />
     <Content Include="Views\Shared\_ModalLayout.cshtml" />
     <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Views\Student\Edit1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
