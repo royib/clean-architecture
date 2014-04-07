@@ -8,45 +8,73 @@
 <script>
     function Edit()
     {
+        
         $('#myModal').modal({
             keyboard: false,
             remote: "/Student/Edit/" + '@(Model.StudentID)'
         })
     }
+    function Delete() {
+        $('#myModal').modal('hide');
+        @*$('#myModal').modal({
+            keyboard: false,
+            remote: "/Student/Delete/" + '@(Model.StudentID)'
+        })*@
+    }
 
 </script>
 
-<h3>Student Details</h3>
+<h2>Student Details</h2>
 
-<form class="form-horizontal" role="form" width="30%">
-
+<form class="form-horizontal" role="form">
     <div class="form-group">
-        <label class="col-sm-2 control-label">@Html.DisplayNameFor(model => model.LastName)</label>
-        <div class="col-sm-10">
+        <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.LastName)</label>
+        <div class="col-sm-9">
             <p class="form-control-static">@Html.DisplayFor(model => model.LastName)</p>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-2 control-label">@Html.DisplayNameFor(model => model.FirstMidName)</label>
-        <div class="col-sm-10">
+        <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.FirstMidName)</label>
+        <div class="col-sm-9">
             <p class="form-control-static">@Html.DisplayFor(model => model.FirstMidName)</p>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-2 control-label">@Html.DisplayNameFor(model => model.EnrollmentDate)</label>
-        <div class="col-sm-10">
+        <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.EnrollmentDate)</label>
+        <div class="col-sm-9">
             <p class="form-control-static">@Html.DisplayFor(model => model.EnrollmentDate)</p>
         </div>
-    </div>
-     <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="button" class="btn btn-default" onclick="Edit()">Edit</button>
-        </div>
-    </div>
+    </div>    
 </form>
-
-   
+<br />
+<h4>Enrollment Details</h4>
+<div class="display-field">
+        <table class="table">
+            <tr>
+                <th>Course Title</th>
+                <th>Grade</th>
+            </tr>
+            @foreach (var item in Model.Enrollments)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Grade)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+ @section fotter {
+     <button type="button" class="btn btn-primary" onclick="Edit()">Edit</button>
+     <button type="button" class="btn btn-primary" onclick="Delete()">Delete</button>
+ }  
 
  
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
 

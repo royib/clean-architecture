@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using University.Core.Service;
 using University.Core.Domain;
+using System.Data;
 
 namespace University.Controllers
 {
@@ -46,18 +47,22 @@ namespace University.Controllers
         // POST: /Student/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create([Bind(Exclude = "StudentID")]Student student)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    // TODO: Add insert logic here
+                    _studentService.CreateStudent(student);                   
+                }
             }
-            catch
+            catch (DataException)
             {
-                return View();
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
+            return RedirectToAction("Index");
+            //return Content(@"<script>$('#myModal').modal('hide')</script>");
         }
 
         //
@@ -86,15 +91,14 @@ namespace University.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _studentService.UpdateStudent(student);
-                    return RedirectToAction("Index");
+                    _studentService.UpdateStudent(student);                    
                 }
             }
             catch
             {
                 return View();
             }
-            return View();
+            return RedirectToAction("Index");
         }
 
         //
@@ -102,25 +106,26 @@ namespace University.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        //
-        // POST: /Student/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
             try
             {
                 // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                _studentService.DeleteStudent(_studentService.getStudentById(id));
+               
             }
             catch
             {
-                return View();
+               
             }
+            return RedirectToAction("Index");
         }
+
+        //
+        //// POST: /Student/Delete/5
+
+        //[HttpPost]
+        //public ActionResult Delete(Student student)
+        //{
+           
+        //}
     }
 }

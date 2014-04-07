@@ -51,6 +51,14 @@
     <Compile Include="Migrations\201403160914452_InitialCreate.Designer.cs">
       <DependentUpon>201403160914452_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404061116284_Update.cs" />
+    <Compile Include="Migrations\201404061116284_Update.Designer.cs">
+      <DependentUpon>201404061116284_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404061148063_Update1.cs" />
+    <Compile Include="Migrations\201404061148063_Update1.Designer.cs">
+      <DependentUpon>201404061148063_Update1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UniversityDbContext.cs" />
@@ -71,6 +79,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201403160914452_InitialCreate.resx">
       <DependentUpon>201403160914452_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404061116284_Update.resx">
+      <DependentUpon>201404061116284_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404061148063_Update1.resx">
+      <DependentUpon>201404061148063_Update1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

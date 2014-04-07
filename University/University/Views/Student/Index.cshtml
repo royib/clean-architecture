@@ -8,7 +8,13 @@
    
 <h2>All Students</h2>
 <script>
+    function addStudent() {
 
+        $('#myModal').modal({
+            keyboard: false,
+            remote: "/Student/Create/"
+        })
+    }
     //// The ig.loader is used to load required IgniteUI JavaScript 
     //// and CSS resources. It accepts a configuration object that specifies
     //// default paths and the components to load into the page.
@@ -53,9 +59,10 @@
 
 </script>
 
+
     <table id="grid" class="table-responsive"></table>
 
-
+ <button type="button" class="btn btn-default" onclick="addStudent()">Add Student</button>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-keyboard="true" >
 <div class="modal-dialog">
     <div class="modal-content">

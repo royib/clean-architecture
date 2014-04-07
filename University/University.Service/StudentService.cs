@@ -57,5 +57,16 @@ namespace University.Service
             _studentRepository.Update(student);
             
         }
+        //Delete student
+        public void DeleteStudent(Student student)
+        {
+            _studentRepository.Delete(student);
+        }
+
+
+        public void CreateStudent(Student student)
+        {
+            _studentRepository.Insert(student);
+        }
     }
 }
