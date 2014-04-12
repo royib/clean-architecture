@@ -9,7 +9,7 @@ namespace University.Core.Service
 {
     public interface IStudentService
     {
-        IEnumerable<Student> getAllStudents(int pageSize, int pageNumber, out int RecordCount, string orderByString);
+        IEnumerable<studentIndex> getAllStudents(int pageSize, int pageNumber, out int RecordCount, string orderByString);
         Student getStudentById(int id);
         void UpdateStudent(Student student);
         void DeleteStudent(Student student);

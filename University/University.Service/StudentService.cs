@@ -26,7 +26,7 @@ namespace University.Service
         }
         
         //Get All The Students
-        public IEnumerable<Core.Domain.Student> getAllStudents(int pageSize, int pageNumber, out int RecordCount, string orderByString)
+        public IEnumerable<Core.Domain.studentIndex> getAllStudents(int pageSize, int pageNumber, out int RecordCount, string orderByString)
         {
             var Students = _studentRepository.Table;
             var query = Students.OrderBy(s => s.StudentID);
@@ -40,15 +40,21 @@ namespace University.Service
             {
                 StudentsPage = query.OrderBy(orderByString).Skip(pageSize * (pageNumber)).Take(pageSize);
             }
-            return StudentsPage.ToList();
+
+            return StudentsPage.Select(s => new studentIndex()
+            {
+                StudentID= s.StudentID,
+                LastName = s.LastName,
+                FirstMidName = s.FirstMidName
+            }).ToList();
            
         }
 
         //get student by id
         public Student getStudentById(int id)
         {
-            var Student = _studentRepository.GetById(id);
-            return Student;
+            Student student = _studentRepository.Table.Include("Enrollments").Where(s => s.StudentID == id).FirstOrDefault();
+            return student;
         }
 
         //update student

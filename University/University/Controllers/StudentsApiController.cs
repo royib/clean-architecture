@@ -8,7 +8,6 @@ using System.Web.Http;
 using University.Core.Service;
 using University.Models;
 using University.Core.Domain;
-using University.Models.Students;
 using System.IO;
 using System.Web;
 
@@ -25,7 +24,7 @@ namespace University.Controllers
             _studentService = studentService;
         }
 
-        public object GetStudents(int pageSize = 3, int pageNumber = 1 )
+        public studentsGridDto GetStudents(int pageSize = 3, int pageNumber = 1 )
         {
             string orderby = "";
             int RecordCount = 0; 
@@ -34,10 +33,10 @@ namespace University.Controllers
             orderby = Request.GetQueryString("$orderby");
             var Students = _studentService.getAllStudents(pageSize, pageNumber, out RecordCount, orderby);
             //map to student data transfer object
-            IEnumerable<StudentDto> apiStudents = Mapper.Map<IEnumerable<Student>, IEnumerable<StudentDto>>(Students);
-            var o = new { Students = apiStudents, PageSize = pageSize, PageNumber = pageNumber, RecordCount = RecordCount };
-           
-            return o;
+            //IEnumerable<studentIndex> apiStudents = Mapper.Map<IEnumerable<Student>, IEnumerable<studentIndex>>(Students);
+            var studentPage = new studentsGridDto { Students = Students, PageSize = pageSize, PageNumber = pageNumber, RecordCount = RecordCount };
+
+            return studentPage;
         }
     }
 }

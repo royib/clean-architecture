@@ -1,5 +1,4 @@
 ﻿@model University.Core.Domain.Student
-
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_ModalLayout.cshtml";
@@ -7,19 +6,17 @@
 
 <script>
     function Edit()
-    {
-        
+    {        
         $('#myModal').modal({
             keyboard: false,
             remote: "/Student/Edit/" + '@(Model.StudentID)'
         })
     }
-    function Delete() {
-        $('#myModal').modal('hide');
-        @*$('#myModal').modal({
+    function Delete() {       
+        $('#myModal').modal({
             keyboard: false,
             remote: "/Student/Delete/" + '@(Model.StudentID)'
-        })*@
+        })
     }
 
 </script>

@@ -1,5 +1,4 @@
-﻿@model IEnumerable<University.Models.StudentDto>
-
+﻿
 @{
     ViewBag.Title = "IndexGrid";
 }
@@ -59,13 +58,18 @@
 
 </script>
 
-
-    <table id="grid" class="table-responsive"></table>
-
- <button type="button" class="btn btn-default" onclick="addStudent()">Add Student</button>
+<p>
+        <table id="grid" class="table-responsive"></table>
+</p>    
+<p>
+    <button type="button" class="btn btn-default" onclick="addStudent()">Add Student</button>
+</p>    
+    
+ 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-keyboard="true" >
 <div class="modal-dialog">
     <div class="modal-content">
     </div>
 </div>
 </div>
+

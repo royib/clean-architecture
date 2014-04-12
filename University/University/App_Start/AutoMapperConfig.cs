@@ -11,7 +11,7 @@ namespace University.App_Start
     {
         public static void Start()
         {
-            Mapper.CreateMap<University.Core.Domain.Student, University.Models.StudentDto>();
+            Mapper.CreateMap<University.Core.Domain.Student, University.Core.Domain.studentIndex>();
         }
     }
 }

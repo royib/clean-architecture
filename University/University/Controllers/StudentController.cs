@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using University.Core.Service;
 using University.Core.Domain;
 using System.Data;
+using University.Models;
 
 namespace University.Controllers
 {
@@ -31,8 +32,9 @@ namespace University.Controllers
 
         public ActionResult Details(int id)
         {
-            var Student = _studentService.getStudentById(id);
-            return View(Student);
+            var student = _studentService.getStudentById(id);
+          //  var apiStudent = AutoMapper.Mapper.Map<Student, StudentDto>(student);
+            return View(student);
         }
 
         //

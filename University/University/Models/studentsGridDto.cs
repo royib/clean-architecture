@@ -4,12 +4,11 @@ using System.Linq;
 using System.Web;
 using University.Core.Domain;
 
-
-namespace University.Models.Students
+namespace University.Models
 {
-    public class StudentsPageViewModel
+    public class studentsGridDto
     {
-        public IEnumerable<StudentDto> Students;
+        public IEnumerable<studentIndex> Students;
         public int PageSize;
         public int PageNumber;
         public int RecordCount;
